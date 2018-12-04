@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>spring boot form submit example</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.css">
+    <link rel="stylesheet" href="styles/form.css">
+</head>
+<body>
+<section class="hero">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                People Manager
+            </h1>
+        </div>
+    </div>
+</section>
+<section>
+
+
+    <div class="columns" id="formcolumn">
+
+    </div>
+</section>
+<section>
+    <div class="columns">
+        <div class="column" id="tilecontainer">
+<div class="tile is-ancestor">
+    <div class="tile is-vertical is-8">
+        <div class="tile">
+            <div class="tile is-parent">
+                <article class="tile is-child notification">
+                    <div class="column">
+
+                        <h2>Register user</h2>
+                        <form action="/getUsers" method="GET">
+                            <div class="field">
+
+                                <label class="label">First name</label>
+                                <div class="control is-narrow">
+                                    <input class="input" type="text" placeholder="Text input" name="firstName" disabled>
+                                </div>
+                            </div>
+                            <div class="field">
+
+                                <label class="label">Last name</label>
+                                <div class="control">
+                                    <input class="input" type="text" placeholder="Text input" name="lastName" disabled>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Your email address</label>
+                                <div class="control">
+                                    <input class="input is-narrow" type="text" placeholder="Text input" name="email" disabled>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">House number</label>
+                                <div class="control">
+                                    <input class="input is-narrow" type="number" placeholder="Text input" name="houseNum" disabled>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Telephone code</label>
+                                <div class="control">
+                                    <input class="input is-narrow" type="number" placeholder="Text input" name="phoneCode" disabled>
+                                </div>
+                            </div>
+                            <div class="field">
+                                <label class="label">Number of pets</label>
+                                <div class="control">
+                                    <input class="input is-narrow" type="number" placeholder="Text input" name="pets" disabled>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <div class="control">
+                                    <input class="button is-info is-disabled" type="submit" value="Submit" disabled/>
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child notification">
+
+                <div class="content">
+                    <!-- Content -->
+                </div>
+            </article>
+        </div>
+    </div>
+    <div class="tile is-parent">
+        <article class="tile is-child notification">
+            <div class="content">
+                <div class="column">
+                    <input class="button is-info is-large" onclick="location.href='/showUsers'"value="View all users">
+                </div>
+                <div class="column">
+                    <input class="button is-info is-large" onclick="location.href='/showFiredRules'"value="View anomalies">
+                </div>
+            </div>
+        </article>
+    </div>
+</div>
+<section>
+<div class="columns">
+
+</div>
+
+</section>
+        </div>
+    </div>
+</section>
+</body>
+</html>

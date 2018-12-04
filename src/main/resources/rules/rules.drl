@@ -1,0 +1,112 @@
+package rules
+import  com.droolsfileread.demofileread.people.Person
+import com.droolsfileread.demofileread.filereader.CsvFileRead
+import  com.droolsfileread.demofileread.controller.ReaderController
+import org.drools.core.util.StringUtils
+import java.util.ArrayList
+import java.util.List
+import java.util.Date
+import java.util.Random
+global java.util.List myGlobalRulesList;
+
+function int generateRandomTicketNum(){
+        Random ticketRand = new Random();
+        int m = ticketRand.nextInt(30000)+1;
+        return m;
+}
+
+rule "Read all" salience 0
+dialect "java"
+lock-on-active
+    when
+    then
+    String rulesListString="";
+    for(int i=0; i<myGlobalRulesList.size(); i++){
+        rulesListString+=myGlobalRulesList.get(i)+" ";
+     }
+    ReaderController.printRules(rulesListString);
+    end
+
+rule "Personal information - first name empty." salience 4
+dialect "java"
+lock-on-active
+    when
+
+        personObject : Person(StringUtils.isEmpty(firstName))
+    then
+
+        String ruleNameFirstName = (drools.getRule().getName());
+        personObject.setFirstName("None");
+        Date generatedDate = new Date();
+        myGlobalRulesList.add("<tr><td>  "+personObject.getUniqueID()+"  </td><td>  "+ruleNameFirstName +"  </td><td>  "+generateRandomTicketNum()+"  </td><td>  "+generatedDate+"  </td><td>  "+personObject.isResolutionStatus()+"  </td></tr>\n");
+    end
+
+rule "Personal information - invalid email." salience 1
+dialect "java"
+lock-on-active
+    when
+        personObject : Person(email not matches ".*@.*")
+    then
+        String ruleNameEmail =(drools.getRule().getName());
+        Random ticketRand = new Random(10000);
+        int m = ticketRand.nextInt(30000)+1;
+        Date generatedDate = new Date();
+        myGlobalRulesList.add("<tr><td>  "+personObject.getUniqueID()+"  </td><td>  "+ruleNameEmail +"  </td><td>  "+generateRandomTicketNum()+"  </td><td>  "+generatedDate+"</td><td>  "+personObject.isResolutionStatus()+"  </td></tr>\n");
+    end
+
+rule "Null checks - lastname empty or null." salience 3
+dialect "java"
+lock-on-active
+    when
+        personObject : Person(StringUtils.isEmpty(lastName))
+    then
+        String ruleNameNullLastName =(drools.getRule().getName());
+        Date generatedDate = new Date();
+        myGlobalRulesList.add("<tr><td>  "+personObject.getUniqueID()+"</td><td>  "+ruleNameNullLastName +"  </td><td>  "+generateRandomTicketNum()+"  </td><td>  "+generatedDate+"  </td><td>  "+personObject.isResolutionStatus()+"  </td></tr>\n");
+    end
+
+rule "Address - house number empty" salience 5
+dialect "java"
+lock-on-active
+       when
+           personObject : Person(StringUtils.isEmpty(houseNumber))
+       then
+           System.out.println("Y U NO PRINT");
+           String ruleNameDoorNum =(drools.getRule().getName());
+           Date generatedDate = new Date();
+           myGlobalRulesList.add("<tr><td>  "+personObject.getUniqueID()+"</td><td>  "+personObject.getFirstName()+" "+personObject.getLastName()+" "+ruleNameDoorNum +"  </td><td>  "+generateRandomTicketNum()+"  </td><td>  "+generatedDate+"  </td><td>  "+personObject.isResolutionStatus()+"  </td></tr>\n");
+       end
+
+rule "Address - house number invalid" salience 6
+dialect "java"
+lock-on-active
+       when
+           personObject : Person(!StringUtils.isEmpty(houseNumber) && Integer.parseInt(houseNumber) != null && Integer.parseInt(houseNumber) < 1)
+       then
+           String ruleNameDoorNum =(drools.getRule().getName());
+           Date generatedDate = new Date();
+           int newTicket = generateRandomTicketNum();
+           myGlobalRulesList.add("<tr><td>  "+personObject.getUniqueID()+"</td><td>  "+personObject.getFirstName()+" "+personObject.getLastName()+" "+ruleNameDoorNum +"  </td><td>  "+newTicket+"  </td><td>  "+generatedDate+"  </td><td>  "+personObject.isResolutionStatus()+"  </td></tr>\n");
+       end
+
+rule "Address - Phone code empty" salience 8
+dialect "java"
+lock-on-active
+        when
+            personObject : Person(StringUtils.isEmpty(phoneCode))
+        then
+            String ruleNameAddressPhone =(drools.getRule().getName());
+            Date generatedDate = new Date();
+            myGlobalRulesList.add("<tr><td>  "+personObject.getUniqueID()+"</td><td>  "+ruleNameAddressPhone +"  </td><td>  "+generateRandomTicketNum()+"  </td><td>  "+generatedDate+"  </td><td>  "+personObject.isResolutionStatus()+"  </td></tr>\n");
+        end
+
+rule "Address - Phone code less than zero" salience 7
+dialect "java"
+lock-on-active
+          when
+              personObject : Person(!StringUtils.isEmpty(phoneCode) && Integer.parseInt(phoneCode) != null && Integer.parseInt(phoneCode) <1)
+          then
+              String ruleNameAddressPhone =(drools.getRule().getName());
+              Date generatedDate = new Date();
+              myGlobalRulesList.add("<tr><td>  "+personObject.getUniqueID()+"</td><td>  "+ruleNameAddressPhone +"  </td><td>  "+generateRandomTicketNum()+"  </td><td>  "+generatedDate+"  </td><td>  "+personObject.isResolutionStatus()+"  </td></tr>\n");
+          end

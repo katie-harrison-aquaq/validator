@@ -1,0 +1,38 @@
+#formcolumn {
+    margin: 2% 10% 0% 3%;
+}
+
+.hero{
+    background-color:  #333333;
+}
+
+h2{
+    font-weight: bold;
+    font-size: 1.2vw;
+    padding-bottom: 1%;
+}
+
+.title{
+    font-size: 2.6vw;
+    color: #ffbb33;
+
+}
+
+#tilecontainer{
+    margin: 2% 5% 2% 5%;
+}
+
+#adjustwarning{
+    opacity: 0.6;
+
+}
+
+#adjustwarningblue{
+    opacity: 0.6;
+
+}
+
+#ignoreopacity{
+    opacity: 1;
+
+}

@@ -1,0 +1,7 @@
+<tr><td>  36  </td><td>  Personal information - first name empty.  </td><td>  2209  </td><td>  Tue Dec 04 11:11:20 GMT 2018  </td><td>  false  </td></tr>
+
+ <tr><td>  44</td><td>  Null checks - lastname empty or null.  </td><td>  3837  </td><td>  Tue Dec 04 11:30:34 GMT 2018  </td><td>  false  </td></tr>
+ <tr><td>  44  </td><td>  Personal information - invalid email.  </td><td>  12441  </td><td>  Tue Dec 04 11:30:34 GMT 2018</td><td>  false  </td></tr>
+ <tr><td>  32</td><td>  tom button Address - house number empty  </td><td>  3303  </td><td>  Tue Dec 04 11:31:00 GMT 2018  </td><td>  false  </td></tr>
+ <tr><td>  32  </td><td>  Personal information - invalid email.  </td><td>  19374  </td><td>  Tue Dec 04 11:31:00 GMT 2018</td><td>  false  </td></tr>
+ 
